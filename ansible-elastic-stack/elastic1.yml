@@ -1,16 +1,12 @@
 ---
-# This playbook is for setting up Elasticsearch, Logstash and Kibana
-  
 - hosts: elastic1
   remote_user: l00155875
   become: true
   roles:
     - role: pre-requisites
-#    - role: java
     - role: elastic_stack
     - role: elasticsearch
     - role: kibana
     - role: nginx
     - role: logstash
-    - role: filebeat
-#    - role: metricbeat   
+    - role: filebeat 
