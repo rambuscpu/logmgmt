@@ -1,2 +1,2 @@
 # logmgmt
-pfSense,  OpenVPN, Firewall Config, & Centralized Log Management with Ansible Automation Tasks
+pfSense,  OpenVPN, Firewall Config, & Centralized Log Management (Elastic Stack 7.8) with Ansible Automation Tasks
