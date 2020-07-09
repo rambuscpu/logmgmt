@@ -5,26 +5,21 @@
     state: present
     filename: kibana-7.x.list
     update_cache: yes
-# Install Kibana
-- name: Update repositories cache and install Kibana
+
+- name: Install Kibana
   apt:
     name: kibana
     update_cache: yes
-# Configure kibana.yml
-- name: Copy Kibana config (Ion)
+
+- name: Copy Kibana config
   template: src=kibanaConf.j2 dest=/etc/kibana/kibana.yml
 
-#- name: Configure kibana.yml File
-#  copy:
-#   src: /etc/ansible/playbooks/roles/kibana/templates/src=kibanaConf.j2
-#  dest: /etc/kibana/kibana.yml
-# Enable Kibana service
 - name: Enabling Kibana service
   systemd:
     name: kibana
     enabled: yes
     daemon_reload: yes
-# Start Kibana service
+
 - name: Starting Kibana service
   systemd:
     name: kibana

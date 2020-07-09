@@ -1,0 +1,13 @@
+---
+
+- name: Install apt-transport-https
+  apt: name=apt-transport-https state=present
+
+- name: Install openssl
+  apt: name=openssl state=present
+
+- name: Install curl
+  apt: name=curl state=present
+
+- name: Install default-jre
+  apt: name=default-jre state=present update_cache=yes

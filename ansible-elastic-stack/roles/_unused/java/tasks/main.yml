@@ -21,14 +21,14 @@
     path: /usr/lib/java11/jdk-11.0.2/bin/java
     link: /usr/bin/java
     priority: 20000
-
 - name: set JAVA_HOME as environment variable
   blockinfile:
     insertafter: EOF
     path: /etc/environment
-    block: export JAVA_HOME=/usr/lib/java11/jdk-11.0.2
-    block: export LS_HOME=/usr/share/logstash
-    block: export LS_SETTINGS_DIR=/etc/logstash
+    block: |
+      JAVA_HOME=/usr/lib/java11/jdk-11.0.2
+      LS_HOME=/usr/share/logstash
+      LS_SETTINGS_DIR=/etc/logstash
 
 - name: Verify Java Version
   action: shell /usr/bin/java -version

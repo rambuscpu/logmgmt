@@ -1,5 +1,5 @@
 ---
-# The hostname of the server that is going to run the ELK stack
+# The hostname of the server that is going to run the Elastic stack
 server_name: elastic1
 # -- Nginx Variables --
 # The port that Nginx listens to that is forwarded to Kibana's local port
@@ -7,8 +7,8 @@ nginx_kibana_port: 80
 # Nginx SSL listening port
 elk_server_ssl_cert_port: 8080
 # The web authentication credentials to gain access to Kibana
-kibana_user: admin
-kibana_password: admin
+kibana_user: elastic
+kibana_password: changeme
 # The system user that Nginx will use
 nginx_user: www-data
 # The IP address of the ELK server that is going to be installed
