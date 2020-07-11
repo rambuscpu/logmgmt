@@ -11,3 +11,16 @@
 
 - name: Install default-jre
   apt: name=default-jre state=present update_cache=yes
+
+- name: Verify java version
+  action: shell /usr/bin/java -version
+  register: java
+  changed_when: no
+  tags:
+    - verify
+
+- assert: 
+    that: 
+      - "'{{ java_version }}' in java.stderr"
+- debug:
+    msg: "Java Version Found {{ java.stderr }}"

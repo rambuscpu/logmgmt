@@ -1,0 +1,53 @@
+#testing
+
+- name: Ensure elasticsearch service is running
+  systemd:
+    name: elasticsearch
+    enabled: yes
+    state: started
+  register: response
+
+- name: Ensure kibana service is running
+  systemd:
+    name: kibana
+    enabled: yes
+    state: started
+  register: response
+
+- name: Ensure logstash service is running
+  systemd:
+    name: logstash
+    enabled: yes
+    state: started
+  register: response
+
+- name: Ensure filebeat service is running
+  systemd:
+    name: filebeat
+    enabled: yes
+    state: started
+  register: response
+
+- name: Ensure cluster health status returns (yellow or green)
+  uri:
+    url: http://localhost:{{ es_http_port }}/_cluster/health
+    method: GET
+  register: response
+  until: "response.json.status == 'yellow' or response.json.status == 'green'"
+  retries: 500
+  delay: 15
+
+- name: Check elasticsearch http host is open
+  uri:
+    url: http://localhost:{{ es_http_port }}
+    method: GET
+    status_code: 200
+
+- name: Check nginx_kibana_port is open and validate kibana user credentials
+  uri:
+    url: http://localhost:{{ nginx_kibana_port }}
+    method: GET
+    user: '{{ kibana_user }}'
+    password: '{{ kibana_password }}'
+    force_basic_auth: yes
+    status_code: 200

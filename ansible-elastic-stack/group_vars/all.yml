@@ -6,10 +6,19 @@ server_name: elastic1
 nginx_kibana_port: 80
 # Nginx SSL listening port
 elk_server_ssl_cert_port: 8080
-# The web authentication credentials to gain access to Kibana
+# The nginx web authentication credentials to gain access to Kibana
 kibana_user: elastic
 kibana_password: changeme
 # The system user that Nginx will use
 nginx_user: www-data
 # The IP address of the ELK server that is going to be installed
 elk_ip: 172.16.161.100
+# Verify the elastic stack version
+elk_version: 7.8.0
+#Theis is the default port
+es_http_port: 9200
+#Theis is the default port used for back end communication between logstash and elasticsearch
+es_transport_port: 9300
+#Verify Java version. This will validate that the Java version 11.x.x was installed. 
+#Note the installation will fail if the Java version is different (update this value accordingly)
+java_version: 11

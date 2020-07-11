@@ -10,3 +10,4 @@
     - role: nginx
     - role: logstash
     - role: filebeat 
+    - role: test-validate
